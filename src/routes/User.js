@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserTable from '../components/UserTable';
 import UserForm from '../components/UserForm';
+import UserSerch from '../components/UserSearch';
 import { connect } from 'dva';
 import { Button } from 'antd';
 class User extends Component {
@@ -20,24 +21,36 @@ class User extends Component {
     }
     //修改用户
     handleUpdate = (values) => {
-       this.props.dispatch({
-           type: 'user/updateUser',
-           payload:values
-       })
+        this.props.dispatch({
+            type: 'user/updateUser',
+            payload: values
+        })
+    }
+    //查询用户 
+    handleQuery = (name) => {
+        this.props.dispatch({
+            type: 'user/queryUser',
+            payload: name
+        })
     }
     render() {
         const { user } = this.props;
         return (
             <div>
-                <UserForm
-                    handleAddUser={this.handleAddUser}
-                >
-                    <Button
-                        style={{ margin: 15 }}
-                        type="primary">
-                        添加
-                    </Button>
-                </UserForm>
+                <div style={{ height: 50 }}>
+                    <UserForm
+                        handleAddUser={this.handleAddUser}
+                    >
+                        <Button
+                            style={{ margin: 15 }}
+                            type="primary">
+                            添加
+                         </Button>
+                    </UserForm>
+                    <UserSerch
+                        handleQuery={this.handleQuery}
+                    />
+                </div>
                 <UserTable
                     handleUpdate={this.handleUpdate}
                     handleDelteUser={this.handleDelteUser}

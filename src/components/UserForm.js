@@ -78,7 +78,7 @@ class CollectionsPage extends React.Component {
         handleUpdate(updateUser);
       } else {
         return;
-      } 
+      }
       form.resetFields();
       this.setState({ visible: false });
     });
@@ -89,8 +89,8 @@ class CollectionsPage extends React.Component {
   render() {
     const { children, userData } = this.props;
     return (
-      <div style={{ display: "inline-block" }}>
-        <a type="primary" onClick={this.showModal}>{children}</a>
+      <div style={{ display: "inline-block", float: 'right', height: 30 }}>
+        <a style={{ float: 'none' }} type="primary" onClick={this.showModal}>{children}</a>
         <CollectionCreateForm
           userData={userData}
           wrappedComponentRef={this.saveFormRef}

@@ -24,8 +24,8 @@ export default {
 			// eslint-disable-line
 			yield put({ type: 'save' });
 		},
-		*queryUser({ payload }, { call, put }) {
-			const { data } = yield call(query);
+		*queryUser({ payload:name }, { call, put }) {
+			const { data } = yield call(query,name);
 			if (data) {
 				yield put({
 					type: 'save',

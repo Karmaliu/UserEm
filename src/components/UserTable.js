@@ -23,16 +23,18 @@ export default class UserTable extends React.Component {
 			title: '操作',
 			key: 'action',
 			render: (text, record) => (
-				<span>
-					<a onClick={() => this.props.handleDelteUser(record.userId)}> 删除 </a>
-					<Divider type="vertical" />
-					<UserForm 
-					 userData ={record} 
-					 handleUpdate={this.props.handleUpdate}
-					 >
-					 修改
+				<div style={{ width: 80 }}>
+					<span >
+						<a onClick={() => this.props.handleDelteUser(record.userId)}> 删除 </a>
+						<Divider type="vertical" />
+						<UserForm
+							userData={record}
+							handleUpdate={this.props.handleUpdate}
+						>
+							修改
 					</UserForm>
-				</span>
+					</span>
+				</div>
 			)
 		}
 	];
