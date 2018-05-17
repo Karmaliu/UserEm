@@ -39,7 +39,13 @@ export default class UserTable extends React.Component {
 		}
 	];
 	render() {
-		const { user: { list } } = this.props;
-		return <Table columns={this.columns} dataSource={list} />;
+		const { user: { list, loading } } = this.props;
+		return (
+			<Table
+				columns={this.columns}
+				dataSource={list}
+				loading={loading}
+			/>
+		)
 	}
 }

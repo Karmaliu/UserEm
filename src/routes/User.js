@@ -51,6 +51,7 @@ class User extends Component {
                         handleQuery={this.handleQuery}
                     />
                 </div>
+                <div style={{height:15}}></div>
                 <UserTable
                     handleUpdate={this.handleUpdate}
                     handleDelteUser={this.handleDelteUser}

@@ -1,9 +1,11 @@
 import { query, deleteUser, addUser, updateUser } from '../services/user';
+
 export default {
 	namespace: 'user',
 
 	state: {
-		list: []
+		list: [],
+		loading:false
 	},
 
 	subscriptions: {
@@ -25,12 +27,20 @@ export default {
 			yield put({ type: 'save' });
 		},
 		*queryUser({ payload:name }, { call, put }) {
+			yield put({
+				 type:'changeLoading',
+				 payload: {loading:true}
+			})
 			const { data } = yield call(query,name);
 			if (data) {
 				yield put({
 					type: 'save',
 					payload: data.results
 				});
+				yield put({
+					type:'changeLoading',
+					payload: {loading:false}
+			   })
 			}
 		},
 		*deleteUser({ payload: userId }, { call, put }) {
@@ -63,9 +73,14 @@ export default {
 		save(state, action) {
 			return {
 				...state,
-
 				list: action.payload
 			};
+		},
+		changeLoading(state,action){
+			return {
+				...state,
+				loading:action.payload.loading
+			}
 		}
 	}
 };
